@@ -5,13 +5,13 @@ const Buttons = props => {
     <section className="buttons">
       <div className="homeButtons">
         <button
-          onClick={props.homeScoreTouchdown}
+          onClick={() => props.scoreHandler("home", 6)}
           className="homeButtons__touchdown"
         >
           Home Touchdown
         </button>
         <button
-          onClick={props.homeScoreFieldgoal}
+          onClick={() => props.scoreHandler("home", 3)}
           className="homeButtons__fieldGoal"
         >
           Home Field Goal
@@ -19,13 +19,13 @@ const Buttons = props => {
       </div>
       <div className="awayButtons">
         <button
-          onClick={props.awayScoreTouchdown}
+          onClick={() => props.scoreHandler("away", 6)}
           className="awayButtons__touchdown"
         >
           Away Touchdown
         </button>
         <button
-          onClick={props.awayScoreFieldgoal}
+          onClick={() => props.scoreHandler("away", 3)}
           className="awayButtons__fieldGoal"
         >
           Away Field Goal

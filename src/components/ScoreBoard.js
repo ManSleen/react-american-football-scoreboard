@@ -7,20 +7,12 @@ const ScoreBoard = () => {
   const [awayScore, setAwayScore] = useState(0);
   const [homeScore, setHomeScore] = useState(0);
 
-  const awayScoreTouchdown = () => {
-    setAwayScore(awayScore + 6);
-  };
-
-  const homeScoreTouchdown = () => {
-    setHomeScore(homeScore + 6);
-  };
-
-  const awayScoreFieldgoal = () => {
-    setAwayScore(awayScore + 3);
-  };
-
-  const homeScoreFieldgoal = () => {
-    setHomeScore(homeScore + 3);
+  const scoreHandler = (teamName, amountScored) => {
+    if (teamName === "away") {
+      setAwayScore(awayScore + amountScored);
+    } else if (teamName === "home") {
+      setHomeScore(homeScore + amountScored);
+    }
   };
 
   return (
@@ -29,12 +21,7 @@ const ScoreBoard = () => {
         <TopRow awayScore={awayScore} homeScore={homeScore} />
         <BottomRow />
       </section>
-      <Buttons
-        awayScoreTouchdown={awayScoreTouchdown}
-        homeScoreTouchdown={homeScoreTouchdown}
-        awayScoreFieldgoal={awayScoreFieldgoal}
-        homeScoreFieldgoal={homeScoreFieldgoal}
-      />
+      <Buttons scoreHandler={scoreHandler} />
     </div>
   );
 };
