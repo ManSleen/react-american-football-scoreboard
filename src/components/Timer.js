@@ -1,7 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Timer = () => {
-  return <div className="timer">00:03</div>;
+  const [isTicking, setIsTicking] = useState(false);
+  const [time, setTime] = useState(0);
+
+  const handleClick = () => {
+    if (isTicking) {
+      clearInterval();
+    } else {
+      const startTime = Date.now() - time;
+      setInterval(() => {
+        setTime(Date.now() - startTime);
+      }, 1000);
+    }
+    setIsTicking(!isTicking);
+  };
+
+  return (
+    <div>
+      <div className="timer">{time}</div>
+      <button onClick={handleClick}>{isTicking ? "Stop" : "Start"}</button>
+      <button>Reset</button>
+    </div>
+  );
 };
 
 export default Timer;
